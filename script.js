@@ -1,5 +1,6 @@
 let myLibrary = [];
 
+// Book Constructor
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -11,10 +12,6 @@ Book.prototype.info = function () {
   return `${this.title} by ${this.author}, ${this.pages}, ${this.read}`;
 };
 
-function addBookToLibrary() {
-  // do stuff here
-}
-
 const theHobbit = new Book(
   "The Hobbit",
   "J.R.R. Tolkien",
@@ -22,4 +19,11 @@ const theHobbit = new Book(
   "not read yet"
 );
 
-console.log(theHobbit.info());
+function addBookToLibrary() {
+  myLibrary.push(theHobbit);
+  myLibrary.push(theHobbit);
+}
+addBookToLibrary();
+
+
+console.log(myLibrary[0]);
