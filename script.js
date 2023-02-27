@@ -14,12 +14,13 @@ Book.prototype.info = function () {
 
 const theHobbit = new Book(
   "The Hobbit",
-  "J.R.R. Tolkien",
+  "J.R.R. Tolkienaaaaaa",
   "295 pages",
   "not read yet"
 );
 
 function addBookToLibrary() {
+  myLibrary.push(theHobbit);
   myLibrary.push(theHobbit);
   myLibrary.push(theHobbit);
 }
@@ -35,22 +36,31 @@ function loopLibrary() {
 
     const title = document.createElement("h2");
     title.setAttribute("class", "book-title");
-    title.textContent = book.title;
+    title.textContent = `${book.title}`;
     card.appendChild(title);
 
     const author = document.createElement("p");
+    const spanAuthor = document.createElement("span");
+    spanAuthor.textContent = "Author: ";
     author.setAttribute("class", "author");
-    author.textContent = book.author;
+    author.textContent = `${book.author}`;
+    author.prepend(spanAuthor);
     card.appendChild(author);
 
     const pages = document.createElement("p");
+    const spanPages = document.createElement("span");
+    spanPages.textContent = "Pages: ";
     pages.setAttribute("class", "pages");
-    pages.textContent = book.pages;
+    pages.textContent = `${book.pages}`;
+    pages.prepend(spanPages);
     card.appendChild(pages);
 
     const read = document.createElement("p");
+    const spanRead = document.createElement("span");
+    spanRead.textContent = "Read: ";
     read.setAttribute("class", "read");
-    read.textContent = book.read;
+    read.textContent = `${book.read}`;
+    read.prepend(spanRead);
     card.appendChild(read);
   });
 }
