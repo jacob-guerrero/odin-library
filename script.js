@@ -25,5 +25,35 @@ function addBookToLibrary() {
 }
 addBookToLibrary();
 
+const cardContainer = document.querySelector(".card-container");
 
+function loopLibrary() {
+  myLibrary.forEach((book) => {
+    const card = document.createElement("div");
+    card.setAttribute("class", "card");
+    cardContainer.appendChild(card);
+
+    const title = document.createElement("h2");
+    title.setAttribute("class", "book-title");
+    title.textContent = book.title;
+    card.appendChild(title);
+
+    const author = document.createElement("p");
+    author.setAttribute("class", "author");
+    author.textContent = book.author;
+    card.appendChild(author);
+
+    const pages = document.createElement("p");
+    pages.setAttribute("class", "pages");
+    pages.textContent = book.pages;
+    card.appendChild(pages);
+
+    const read = document.createElement("p");
+    read.setAttribute("class", "read");
+    read.textContent = book.read;
+    card.appendChild(read);
+  });
+}
+
+loopLibrary();
 console.log(myLibrary[0]);
