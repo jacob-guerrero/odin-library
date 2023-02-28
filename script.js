@@ -12,19 +12,9 @@ Book.prototype.info = function () {
   return `${this.title} by ${this.author}, ${this.pages}, ${this.read}`;
 };
 
-const theHobbit = new Book(
-  "The Hobbit",
-  "J.R.R. Tolkienaaaaaa",
-  "295 pages",
-  "not read yet"
-);
-
-function addBookToLibrary() {
-  myLibrary.push(theHobbit);
-  myLibrary.push(theHobbit);
-  myLibrary.push(theHobbit);
+function addBookToLibrary(newBook) {
+  myLibrary.push(newBook);
 }
-addBookToLibrary();
 
 const cardContainer = document.querySelector(".card-container");
 // Create cards for each book
@@ -69,9 +59,33 @@ loopLibrary();
 console.log(myLibrary[0]);
 
 /* Show-Hide Form */
-document.querySelector('.show-options').addEventListener("click", ()=> {
+document.querySelector(".show-options").addEventListener("click", () => {
   document.getElementById("myForm").style.display = "block";
-})
-document.querySelector('.hide-options').addEventListener("click", ()=> {
+});
+document.querySelector(".hide-options").addEventListener("click", () => {
   document.getElementById("myForm").style.display = "none";
-})
+});
+
+/* Remove Cards */
+function removeCards() {
+  const cards = document.querySelectorAll(".card");
+  cards.forEach(card => {
+    card.remove();
+  });
+}
+
+/* Add New Books */
+document.querySelector(".add-book").addEventListener("click", (e) => {
+  e.preventDefault();
+  const newBook = new Book(
+    document.querySelector("#title").value,
+    document.querySelector("#author").value,
+    document.querySelector("#pages").value,
+    document.querySelector("#read").value
+  );
+
+  addBookToLibrary(newBook);
+  removeCards();
+  loopLibrary();
+});
+
