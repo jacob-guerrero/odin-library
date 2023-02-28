@@ -20,7 +20,7 @@ h1, h2, h3, p {
     margin: 0;
 }
 
-/* main */
+/* Main */
 body {
     display: flex;
     justify-content: center;
@@ -31,7 +31,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 .main-title {
     height: 20vh;
@@ -41,7 +41,7 @@ main {
     align-items: center;
 }
 
-/* card container */
+/* Card Container */
 .card-container {
     width: 100%;
     padding: 1rem;
@@ -63,4 +63,46 @@ main {
 }
 .card span {
     font-weight: 700;
+}
+
+/* Form */
+.form-container h2 {
+    margin-bottom: 1rem;
+}
+form input:not(:last-of-type) {
+    margin-bottom: 1rem;
+}
+.btn-container {
+    padding: 1.2rem 0 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+.btn {
+    background-color: var(--second-color);
+    padding: 0.8rem 1.2rem;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    opacity: 0.8;
+}
+.show-form {
+    display: none;
+    border: 3px solid #f1f1f1;
+}
+.form-container {
+    padding: 10px;
+    background-color: white;
+}
+.form-container input {
+    display: block;
+    padding: 0.6rem 0.7rem;
+    border: none;
+    background: #f1f1f1;
+}
+.form-container .hide-options {
+    background-color: red;
+    color: whitesmoke;
+}
+.btn:hover {
+    opacity: 1;
 }

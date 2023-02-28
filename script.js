@@ -27,7 +27,7 @@ function addBookToLibrary() {
 addBookToLibrary();
 
 const cardContainer = document.querySelector(".card-container");
-
+// Create cards for each book
 function loopLibrary() {
   myLibrary.forEach((book) => {
     const card = document.createElement("div");
@@ -67,3 +67,11 @@ function loopLibrary() {
 
 loopLibrary();
 console.log(myLibrary[0]);
+
+/* Show-Hide Form */
+document.querySelector('.show-options').addEventListener("click", ()=> {
+  document.getElementById("myForm").style.display = "block";
+})
+document.querySelector('.hide-options').addEventListener("click", ()=> {
+  document.getElementById("myForm").style.display = "none";
+})
