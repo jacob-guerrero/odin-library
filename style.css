@@ -53,6 +53,7 @@ main {
     background-color: var(--main-color);
 }
 .card {
+    position: relative;
     padding: 1.5rem 1.2rem;
     background-color: var(--second-color);
     border-radius: 1rem;
@@ -102,4 +103,22 @@ form input:not(:last-of-type), .form-container h2 {
 }
 .btn:hover {
     opacity: 1;
+}
+
+/* Close icon */
+.material-symbols-outlined {
+    transform: scale(0.9);
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 500,
+        'GRAD' 0,
+        'opsz' 48;
+    position: absolute;
+    cursor: pointer;
+    right: 0.4rem;
+    top: 0.4rem;
+    transition: all .1s ease-in-out;
+}
+.material-symbols-outlined:hover {
+    transform: scale(1);
 }

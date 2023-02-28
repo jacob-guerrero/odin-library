@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Odin Library</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="./script.js" defer></script>
   </head>
   <body>
@@ -23,7 +24,7 @@
           <label for="author">Author: </label>
           <input type="text" name="author" id="author" required>
           <label for="pages">Pages: </label>
-          <input type="text" name="pages" id="pages" required>
+          <input type="tel" name="pages" id="pages" required pattern="^[0-9]+$">
           <label for="read">Read: </label>
           <input type="text" name="read" id="read" required>
       
@@ -36,7 +37,10 @@
 
       <!-- Books -->
       <div class="card-container">
-        <div class="card">
+        <!-- <div class="card">
+          <span class="material-symbols-outlined close">
+            close
+          </span>
           <h2 class="book-title">The Hobbit</h2>
           <p class="author">J.R</p>
           <p class="pages">200</p>
@@ -47,7 +51,7 @@
           <p class="author">J.R</p>
           <p class="pages">200</p>
           <p class="read">yes</p>
-        </div>
+        </div> -->
       </div>
     </main>
   </body>

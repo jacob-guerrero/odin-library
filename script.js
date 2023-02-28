@@ -12,6 +12,17 @@ Book.prototype.info = function () {
   return `${this.title} by ${this.author}, ${this.pages}, ${this.read}`;
 };
 
+// ------------ Ex purposes only
+const theHobbit = new Book(
+  "The Hobbit",
+  "J.R.R. Tolkien",
+  "295 pages",
+  "not read yet"
+);
+myLibrary.push(theHobbit);
+myLibrary.push(theHobbit);
+// ----------- Ex purposes only
+
 function addBookToLibrary(newBook) {
   myLibrary.push(newBook);
 }
@@ -19,10 +30,16 @@ function addBookToLibrary(newBook) {
 const cardContainer = document.querySelector(".card-container");
 // Create cards for each book
 function loopLibrary() {
+  let index = 0;
   myLibrary.forEach((book) => {
     const card = document.createElement("div");
     card.setAttribute("class", "card");
     cardContainer.appendChild(card);
+
+    const close = document.createElement("span");
+    close.textContent = "close";
+    close.classList.add("material-symbols-outlined", "close");
+    card.appendChild(close);
 
     const title = document.createElement("h2");
     title.setAttribute("class", "book-title");
@@ -52,10 +69,16 @@ function loopLibrary() {
     read.textContent = `${book.read}`;
     read.prepend(spanRead);
     card.appendChild(read);
+
+    /* Assign an id for each close book */
+    close.dataset.idBook = index;
+    index += 1;
   });
 }
 
 loopLibrary();
+let closeCards;
+updateCards();
 console.log(myLibrary[0]);
 
 /* Show-Hide Form */
@@ -69,7 +92,7 @@ document.querySelector(".hide-options").addEventListener("click", () => {
 /* Remove Cards */
 function removeCards() {
   const cards = document.querySelectorAll(".card");
-  cards.forEach(card => {
+  cards.forEach((card) => {
     card.remove();
   });
 }
@@ -87,5 +110,32 @@ document.querySelector(".add-book").addEventListener("click", (e) => {
   addBookToLibrary(newBook);
   removeCards();
   loopLibrary();
+
+  /* Update Cards */
+  updateCards();
 });
 
+/* Update Cards (close button) */
+function updateCards() {
+  let closedBook;
+  closeCards = document.querySelectorAll(".close");
+  closeCards.forEach((card) => {
+    card.addEventListener("click", (e) => {
+      closedBook = e.target.dataset.idBook;
+      removeBook(closedBook);
+    });
+  });
+}
+
+/* Remove Book */
+function removeBook(closedBook) {
+  for (let i = 0; i < myLibrary.length; i += 1) {
+    if (i === +closedBook) {
+      myLibrary.splice(i, 1);
+      removeCards();
+      loopLibrary();
+      updateCards();
+      return;
+    }
+  }
+}
