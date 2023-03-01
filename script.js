@@ -62,7 +62,7 @@ function loopLibrary() {
     const readBtn = document.createElement("button");
     spanRead.textContent = "Read: ";
     read.setAttribute("class", "read");
-    readBtn.textContent = `${book.read}`;
+    readBtn.textContent = capitalizeFirstLetter(book.read);
     readBtn.setAttribute("class", "read-btn");
     read.prepend(spanRead);
     read.appendChild(readBtn);
@@ -124,6 +124,7 @@ document.querySelector(".add-book").addEventListener("click", (e) => {
   );
 
   addBookToLibrary(newBook);
+  removeInputs();
   removeCards();
   loopLibrary();
 
@@ -131,6 +132,14 @@ document.querySelector(".add-book").addEventListener("click", (e) => {
   updateCards();
   updateToggle();
 });
+
+/* Clear Inputs */
+function removeInputs() {
+  document.querySelector("#title").value = "";
+  document.querySelector("#author").value = "";
+  document.querySelector("#pages").value = "";
+  document.querySelector("input[name='read']:checked").checked = false;
+}
 
 /* Update Cards (close button) */
 function updateCards() {
@@ -189,4 +198,7 @@ function toggleThis(toggled) {
   }
 }
 
-// Change toggle text in loopLibrary (if)
+/* Capitalize First Letter */
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
