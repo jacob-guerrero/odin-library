@@ -14,7 +14,7 @@ html {
     --third-color: #457b9d;
     --side-color: #f1faee;
     --contrast-color: #e63946;
-    --gray: whitesmoke;
+    --gray: #f5f5f5;
 }
 html, body {
     margin: 0;
@@ -63,6 +63,7 @@ main {
     grid-auto-rows: 1fr;
     gap: 2rem;
     background-color: var(--main-color);
+    box-shadow: 0px 3px 10px 2px rgba(51,51,51,0.5);
 }
 .card {
     height: max-content;
@@ -75,8 +76,24 @@ main {
     text-align: center;
     padding-bottom: 1rem;
 }
+p {
+    margin-bottom: 4px;
+}
 .card span {
     font-weight: 700;
+}
+p:last-child span {
+    margin-right: 4px;
+}
+.read-btn {
+    font-weight: 700;
+    width: 2.5rem;
+    padding: 4px 8px;
+    cursor: pointer;
+    background-color: var(--third-color);
+    color: var(--gray);
+    border: 0;
+    border-radius: 4px;
 }
 
 /* Form */
@@ -98,6 +115,8 @@ form input:not([type="radio"]), .form-container h2 {
 .btn.show-options {
     transition: all .1s ease-in-out;
     border: 1px solid var(--main-color);
+    box-shadow: var(--third-color) 0px 2px 3px 1px;
+    transform: translateY(-2px);
 }
 .btn.add-book {
     background-color: var(--third-color);
@@ -105,9 +124,20 @@ form input:not([type="radio"]), .form-container h2 {
 }
 .show-form {
     display: none;
-    border: 3px solid #f1f1f1;
+    border: 3px solid var(--third-color);
 }
+
 /* Show-form animation */
+.show-options.active, .show-options:active {
+    box-shadow: var(--third-color) 0 2px 6px inset, var(--third-color) 0px 1px 2px 0px;
+    transform: translateY(0px);
+}
+.show-options.active:hover {
+    box-shadow: var(--third-color) 0 2px 6px inset;
+}
+.show-options:hover {
+    box-shadow: var(--third-color) 0px 2px 5px 2px;
+}
 .show-form.active {
     animation: scale-display .4s;
 }
@@ -129,9 +159,6 @@ form input:not([type="radio"]), .form-container h2 {
 .form-container .hide-options {
     background-color: var(--contrast-color);
     color: var(--gray);
-}
-.btn.show-options:hover {
-    scale: 1.05;
 }
 
 /* Close icon */

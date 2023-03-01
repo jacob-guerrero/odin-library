@@ -84,6 +84,7 @@ document.querySelector(".show-options").addEventListener("click", () => {
   if (document.getElementById("myForm").style.display === "block") {
     document.getElementById("myForm").classList.add("out");
     document.getElementById("myForm").classList.remove("active");
+    document.querySelector(".show-options").classList.remove("active");
     setTimeout(() => {
       document.getElementById("myForm").style.display = "none";
     }, 300);
@@ -91,12 +92,14 @@ document.querySelector(".show-options").addEventListener("click", () => {
   }
   document.getElementById("myForm").style.display = "block";
   document.getElementById("myForm").classList.add("active");
+  document.querySelector(".show-options").classList.add("active");
   document.getElementById("myForm").classList.remove("out");
 });
 
 document.querySelector(".hide-options").addEventListener("click", () => {
   document.getElementById("myForm").classList.add("out");
   document.getElementById("myForm").classList.remove("active");
+  document.querySelector(".show-options").classList.remove("active");
   setTimeout(() => {
     document.getElementById("myForm").style.display = "none";
   }, 300);
