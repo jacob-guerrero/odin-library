@@ -81,10 +81,25 @@ updateToggle();
 
 /* Show-Hide Form */
 document.querySelector(".show-options").addEventListener("click", () => {
+  if (document.getElementById("myForm").style.display === "block") {
+    document.getElementById("myForm").classList.add("out");
+    document.getElementById("myForm").classList.remove("active");
+    setTimeout(() => {
+      document.getElementById("myForm").style.display = "none";
+    }, 300);
+    return;
+  }
   document.getElementById("myForm").style.display = "block";
+  document.getElementById("myForm").classList.add("active");
+  document.getElementById("myForm").classList.remove("out");
 });
+
 document.querySelector(".hide-options").addEventListener("click", () => {
-  document.getElementById("myForm").style.display = "none";
+  document.getElementById("myForm").classList.add("out");
+  document.getElementById("myForm").classList.remove("active");
+  setTimeout(() => {
+    document.getElementById("myForm").style.display = "none";
+  }, 300);
 });
 
 /* Remove Cards */
@@ -145,7 +160,7 @@ function removeBook(closedBook) {
 function updateToggle() {
   let toggled;
   toggleBtns = document.querySelectorAll(".read-btn");
-  for (let i = 0; i < toggleBtns.length; i+=1) {
+  for (let i = 0; i < toggleBtns.length; i += 1) {
     toggleBtns[i].id = `${i}`;
   }
   toggleBtns.forEach((btn) => {
@@ -157,7 +172,7 @@ function updateToggle() {
 }
 
 function toggleThis(toggled) {
-  for (let i = 0; i < toggleBtns.length; i+=1) {
+  for (let i = 0; i < toggleBtns.length; i += 1) {
     if (i === +toggled && myLibrary[i].read === "yes") {
       myLibrary[+toggled].read = "no";
       toggleBtns[i].textContent = "no";
