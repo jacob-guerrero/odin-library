@@ -13,14 +13,9 @@ Book.prototype.info = function () {
 };
 
 // ------------ Ex purposes only
-const theHobbit = new Book(
-  "The Hobbit",
-  "J.R.R. Tolkien",
-  "295 pages",
-  "not read yet"
-);
+/* const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", "295 pages", "yes");
 myLibrary.push(theHobbit);
-myLibrary.push(theHobbit);
+myLibrary.push(theHobbit); */
 // ----------- Ex purposes only
 
 function addBookToLibrary(newBook) {
@@ -64,10 +59,13 @@ function loopLibrary() {
 
     const read = document.createElement("p");
     const spanRead = document.createElement("span");
+    const readBtn = document.createElement("button");
     spanRead.textContent = "Read: ";
     read.setAttribute("class", "read");
-    read.textContent = `${book.read}`;
+    readBtn.textContent = `${book.read}`;
+    readBtn.setAttribute("class", "read-btn");
     read.prepend(spanRead);
+    read.appendChild(readBtn);
     card.appendChild(read);
 
     /* Assign an id for each close book */
@@ -76,10 +74,10 @@ function loopLibrary() {
   });
 }
 
+let toggleBtns;
 loopLibrary();
-let closeCards;
 updateCards();
-console.log(myLibrary[0]);
+updateToggle();
 
 /* Show-Hide Form */
 document.querySelector(".show-options").addEventListener("click", () => {
@@ -104,7 +102,7 @@ document.querySelector(".add-book").addEventListener("click", (e) => {
     document.querySelector("#title").value,
     document.querySelector("#author").value,
     document.querySelector("#pages").value,
-    document.querySelector("#read").value
+    document.querySelector("input[name='read']:checked").value
   );
 
   addBookToLibrary(newBook);
@@ -113,10 +111,12 @@ document.querySelector(".add-book").addEventListener("click", (e) => {
 
   /* Update Cards */
   updateCards();
+  updateToggle();
 });
 
 /* Update Cards (close button) */
 function updateCards() {
+  let closeCards;
   let closedBook;
   closeCards = document.querySelectorAll(".close");
   closeCards.forEach((card) => {
@@ -135,7 +135,40 @@ function removeBook(closedBook) {
       removeCards();
       loopLibrary();
       updateCards();
+      updateToggle();
       return;
     }
   }
 }
+
+/* Toggle btn */
+function updateToggle() {
+  let toggled;
+  toggleBtns = document.querySelectorAll(".read-btn");
+  for (let i = 0; i < toggleBtns.length; i+=1) {
+    toggleBtns[i].id = `${i}`;
+  }
+  toggleBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      toggled = e.target.id;
+      toggleThis(toggled);
+    });
+  });
+}
+
+function toggleThis(toggled) {
+  for (let i = 0; i < toggleBtns.length; i+=1) {
+    if (i === +toggled && myLibrary[i].read === "yes") {
+      myLibrary[+toggled].read = "no";
+      toggleBtns[i].textContent = "no";
+      return;
+    }
+    if (i === +toggled && myLibrary[i].read === "no") {
+      myLibrary[+toggled].read = "yes";
+      toggleBtns[i].textContent = "yes";
+      return;
+    }
+  }
+}
+
+// Change toggle text in loopLibrary (if)

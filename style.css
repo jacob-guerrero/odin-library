@@ -67,7 +67,7 @@ main {
 }
 
 /* Form */
-form input:not(:last-of-type), .form-container h2 {
+form input:not([type="radio"]), .form-container h2 {
     margin-bottom: 1rem;
 }
 .btn-container {
@@ -121,4 +121,11 @@ form input:not(:last-of-type), .form-container h2 {
 }
 .material-symbols-outlined:hover {
     transform: scale(1);
+}
+
+
+/* Checkboxes */
+input[type="radio"] {
+    display: inline-block;
+    margin-left: 1rem;
 }

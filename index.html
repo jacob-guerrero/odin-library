@@ -25,8 +25,14 @@
           <input type="text" name="author" id="author" required>
           <label for="pages">Pages: </label>
           <input type="tel" name="pages" id="pages" required pattern="^[0-9]+$">
-          <label for="read">Read: </label>
-          <input type="text" name="read" id="read" required>
+          
+          <p for="read">Read it?</p>
+          <div class="radio-btn">
+            <input type="radio" id="yes" name="read" value="yes">
+            <label for="yes">Yes!</label>
+            <input type="radio" id="no" name="read" value="no">
+            <label for="no">No!</label>
+          </div>
       
           <div class="btn-container">
             <button type="submit" class="btn add-book">Add Book</button>
