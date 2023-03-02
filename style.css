@@ -15,6 +15,8 @@ html {
     --side-color: #f1faee;
     --contrast-color: #e63946;
     --gray: #f5f5f5;
+    --gray-second: #d6d6d6;
+    --gray-darker: #a0a0a0;
 }
 html, body {
     margin: 0;
@@ -71,6 +73,7 @@ main {
     padding: 1.5rem 1.2rem;
     background-color: var(--second-color);
     border-radius: 1rem;
+    box-shadow: 0px 1px 5px 2px var(--third-color);
 }
 .book-title {
     text-align: center;
@@ -92,9 +95,19 @@ p:last-child span {
     cursor: pointer;
     background-color: var(--third-color);
     color: var(--gray);
-    border: 0;
+    border: 1px solid var(--main-color);
     border-radius: 4px;
 }
+.read-btn.no-read {
+    background-color: var(--gray-second);
+    color: #444444e8;
+    border: 1px solid var(--gray-darker);
+}
+/* .read-btn.no-read {
+    background-color: var(--contrast-color);
+    color: var(--gray);
+    border: 1px solid var(--main-color);
+} */
 
 /* Form */
 form input:not([type="radio"]), .form-container h2 {
@@ -125,6 +138,18 @@ form input:not([type="radio"]), .form-container h2 {
 .show-form {
     display: none;
     border: 3px solid var(--third-color);
+}
+/* Transition form buttons */
+.btn.add-book, .btn.hide-options {
+    transition: all .15s ease-in-out;
+}
+.btn.add-book:hover, .btn.hide-options:hover {
+    transform: translateY(-1px);
+    box-shadow: 0px 5px 5px -2px #6969699c;
+}
+.btn.add-book:active, .btn.hide-options:active {
+    transform: translateY(0);
+    box-shadow: 0px 2px 2px -1px #6969699c;
 }
 
 /* Show-form animation */
@@ -180,7 +205,7 @@ form input:not([type="radio"]), .form-container h2 {
 }
 
 
-/* Checkboxes */
+/* Radio inputs */
 input[type="radio"] {
     display: inline-block;
     margin-left: 1rem;

@@ -64,6 +64,7 @@ function loopLibrary() {
     read.setAttribute("class", "read");
     readBtn.textContent = capitalizeFirstLetter(book.read);
     readBtn.setAttribute("class", "read-btn");
+    toggleColor(readBtn); // Add color to no-read (toggle later)
     read.prepend(spanRead);
     read.appendChild(readBtn);
     card.appendChild(read);
@@ -187,14 +188,26 @@ function toggleThis(toggled) {
   for (let i = 0; i < toggleBtns.length; i += 1) {
     if (i === +toggled && myLibrary[i].read === "yes") {
       myLibrary[+toggled].read = "no";
-      toggleBtns[i].textContent = "no";
+      toggleBtns[i].textContent = "No";
+      toggleColor(toggleBtns[i]);
       return;
     }
     if (i === +toggled && myLibrary[i].read === "no") {
       myLibrary[+toggled].read = "yes";
-      toggleBtns[i].textContent = "yes";
+      toggleBtns[i].textContent = "Yes";
+      toggleColor(toggleBtns[i]);
       return;
     }
+  }
+}
+
+/* Toggle read colors */
+function toggleColor(readBtn) {
+  // document.querySelector(".read-btn").classList.toggle("no-read");
+  if (readBtn.textContent !== "Yes") {
+    readBtn.classList.add("no-read");
+  } else {
+    readBtn.classList.remove("no-read");
   }
 }
 
