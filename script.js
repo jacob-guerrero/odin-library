@@ -130,7 +130,30 @@ function removeCards() {
 
 /* Add New Books */
 document.querySelector(".add-book").addEventListener("click", (e) => {
-  e.preventDefault();
+  /* Validation */
+  const title = document.querySelector("#title");
+  const author = document.querySelector("#author");
+  const pages = document.querySelector("#pages");
+
+  if(!title.validity.valueMissing) {
+    title.setCustomValidity("");    
+  } else {
+    title.setCustomValidity("Please Fill Out This Field");
+    return;
+  }
+  if(!author.validity.valueMissing) {
+    author.setCustomValidity("");
+  } else {
+    author.setCustomValidity("Please Fill Out This Field");
+    return;
+  }
+  if(!pages.validity.valueMissing) {
+    pages.setCustomValidity("");
+  } else {
+    pages.setCustomValidity("Please Fill Out This Field");
+    return;
+  }
+
   const newBook = new Book(
     document.querySelector("#title").value,
     document.querySelector("#author").value,
