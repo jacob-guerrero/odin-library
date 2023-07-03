@@ -129,11 +129,52 @@ function removeCards() {
 }
 
 /* Add New Books */
+document.querySelector('.form-container').addEventListener('input', (e) => {
+  const title = document.querySelector("#title");
+  const author = document.querySelector("#author");
+  const pages = document.querySelector("#pages");
+  const titleRegEx = /[\w]+/;
+  const authorRegEx = /[a-zA-Z]+/;
+
+  if(titleRegEx.test(title.value)) {
+    title.setCustomValidity("");    
+  }
+  if(authorRegEx.test(author.value)) {
+    author.setCustomValidity("");    
+  }
+  if(!pages.validity.patternMismatch) {
+    pages.setCustomValidity("");
+  } else {
+    pages.setCustomValidity("Please Use Numbers");
+  }
+})
+
 document.querySelector(".add-book").addEventListener("click", (e) => {
   /* Validation */
   const title = document.querySelector("#title");
   const author = document.querySelector("#author");
   const pages = document.querySelector("#pages");
+  const titleRegEx = /[\w]+/;
+  const authorRegEx = /[a-zA-Z]+/;
+    
+  if(titleRegEx.test(title.value)) {
+    title.setCustomValidity("");    
+  } else {
+    title.setCustomValidity("Please Use Letters Or Numbers");
+    return;
+  }
+  if(authorRegEx.test(author.value)) {
+    author.setCustomValidity("");    
+  } else {
+    author.setCustomValidity("Please Use Letters");
+    return;
+  }
+  if(!pages.validity.patternMismatch) {
+    pages.setCustomValidity("");
+  } else {
+    pages.setCustomValidity("Please Use Numbers");
+    return;
+  }
 
   if(!title.validity.valueMissing) {
     title.setCustomValidity("");    
